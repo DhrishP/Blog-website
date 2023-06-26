@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import { dateconverter } from '@/lib/dateconverter'
 import Link from 'next/link'
 
-export const revalidate = 0;
+export const revalidate = 86400;
 export async function generateStaticParams() {
   const posts = await  getPostsMeta()
 
@@ -48,6 +48,7 @@ export default  async  function Blogpost({params}:{params:{postID:string}}) {
     const newDate = dateconverter(meta.date)
   return (
      <>
+     <div className=''>
                 <h2 className="text-3xl mt-4 mb-0">{meta.title}</h2>
             <p className="mt-0 text-sm">
                 {newDate}
@@ -64,7 +65,7 @@ export default  async  function Blogpost({params}:{params:{postID:string}}) {
             <p className="mb-10">
                 <Link href="/">← Back to home</Link>
             </p>
-
+            </div>
     </>
   )
 }

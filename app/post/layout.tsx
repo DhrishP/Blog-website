@@ -1,7 +1,6 @@
 
 import { Bagel_Fat_One} from 'next/font/google'
-import {Nav} from '../app/Components/Nav'
-import '../app/globals.css'
+
 
 const inter =   Bagel_Fat_One({ weight: ['400'],subsets:['latin-ext'] })
 
@@ -16,11 +15,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className=''>
-        <Nav/>
-        {children}z
-        </body>
-    </html>
+     <>
+       <main className="px-4 md:px-6 prose prose-xl prose-slate dark:prose-invert mx-auto">
+          {children}
+        </main>
+        </>
+
   )
 }

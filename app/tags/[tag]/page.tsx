@@ -2,7 +2,7 @@ import { getPostsMeta } from "@/lib/posts"
 import Listitems from "@/app/Components/Listitems"
 import Link from "next/link"
 
-export const revalidate = 86400
+export const revalidate = 20
 
 type Props = {
     params: {
