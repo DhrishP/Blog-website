@@ -1,7 +1,9 @@
 import Post from "./Components/Post";
 
+// export const revalidate = 10
 
 export default function Home() {
+
   return (
 <>
 <div className="flex flex-wrap items-center justify-center h-screen ">

@@ -1,9 +1,12 @@
 import { dateconverter } from '@/lib/dateconverter';
 import React from 'react'
 import Link from 'next/link';
+type Props ={
+  post:Meta
+}
 
-
-const Listitems = ({title,date,id}: BlogPost) => {
+const Listitems = ({post}: Props) => {
+  const {id,title,date} = post
     const NewDate = dateconverter(date);
   return (
     <Link className='bg-slate-100  cursor-pointer flex justify-between shadow-md' href={`/post/${id}`}> 
