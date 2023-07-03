@@ -3,8 +3,13 @@ import React from 'react'
 import { notFound } from "next/navigation"
 import { dateconverter } from '@/lib/dateconverter'
 import Link from 'next/link'
-
+type Props = {
+  params: {
+      postID: string
+  }
+}
 export const revalidate = 86400;
+
 export async function generateStaticParams() {
   const posts = await  getPostsMeta()
 
@@ -15,25 +20,25 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function getMetadata({params}:{params:{postID:string}}){
- const {postID} = params
- const posts = await getPostByName(`${postID}.mdx`)
- if (!posts) {
-  return {
-    title:'post not found'
-  }
- }
- return{
-  title:posts.meta.title
- }
+export async function generateMetadata({ params: { postID } }: Props) {
 
- 
+  const post = await getPostByName(`${postID}.mdx`) //deduped!
+
+  if (!post) {
+      return {
+          title: 'Post Not Found'
+      }
+  }
+
+  return {
+      title: post.meta.title,
+  }
 }
 
 
-export default  async  function Blogpost({params}:{params:{postID:string}}) {
 
-  const {postID } = params
+
+export default  async  function Blogpost({ params: { postID } }: Props) {
     const post = await getPostByName(`${postID}.mdx`)
 
    if(!post){

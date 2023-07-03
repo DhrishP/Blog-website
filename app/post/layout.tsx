@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
      <>
-       <main className="px-4 md:px-6 prose prose-xl prose-slate dark:prose-invert mx-auto">
+       <main className="px-4 md:px-6 prose prose-xl  prose-slate dark:prose-invert mx-auto">
           {children}
         </main>
         </>
